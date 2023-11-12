@@ -2,6 +2,7 @@
 #define BVH_V2_BVH_H
 
 #include "bvh/v2/node.h"
+#include "bvh/v2/tri.h"
 
 #include <cstddef>
 #include <iterator>
@@ -18,6 +19,9 @@ struct Bvh {
 
     std::vector<Node> nodes;
     std::vector<size_t> prim_ids;
+    bool bPrecomputed{ false };
+    bool bPermuted{ false };
+    std::vector<PrecomputedTri<float>> precomputed_tris;
 
     Bvh() = default;
     Bvh(Bvh&&) = default;
